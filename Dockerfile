@@ -1,5 +1,7 @@
 FROM desktopcontainers/base-mate
 
+MAINTAINER MarvAmBass (https://github.com/DesktopContainers)
+
 RUN apt-get -q -y update && \
     apt-get -q -y install easytag && \
     apt-get -q -y clean && \
