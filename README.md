@@ -5,7 +5,7 @@ This is a container for the easytag music tagging application.
 
 You can link the file you want to tag to /rips inside the container.
 
-It's based on __DesktopContainers/base-debian__
+It's based on __DesktopContainers/base-mate__
 
 ## Usage: Run the Client
 
