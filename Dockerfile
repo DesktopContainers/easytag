@@ -1,4 +1,4 @@
-FROM desktopcontainers/base-mate
+FROM desktopcontainers/base-debian
 
 MAINTAINER MarvAmBass (https://github.com/DesktopContainers)
 
