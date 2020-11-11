@@ -1,16 +1,7 @@
-FROM desktopcontainers/base-debian
+FROM desktopcontainers/base-alpine
 
-MAINTAINER MarvAmBass (https://github.com/DesktopContainers)
-
-RUN apt-get -q -y update \
- && apt-get -q -y install easytag \
- && apt-get -q -y clean \
- && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*\
+RUN apk add --no-cache easytag \
  \
- && echo "easytag \$*" >> /usr/local/bin/ssh-app.sh \
- && mkdir -p /rips \
- && chown app.app -R /rips \
+ && echo 'easytag $*' >> /container/scripts/app \
  \
- && sed -i 's/starting services"/starting services"\n\nchmod a+rwx \/rips\n\n/g' /usr/local/bin/entrypoint.sh
-
-VOLUME ["/rips"]
+ && sed -i 's/# PRE-RUN PHASE/# PRE-RUN PHASE\nchmod a+rwx -R /rips/g' /container/scripts/entrypoint.sh
