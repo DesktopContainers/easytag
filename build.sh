@@ -7,7 +7,7 @@ PLATFORM="linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6"
 if [ -z ${EASYTAG_VERSION+x} ] || [ -z ${ALPINE_VERSION+x} ]; then
   docker-compose build -q --pull --no-cache
   export ALPINE_VERSION=$(docker run --rm -ti "$IMG" cat /etc/alpine-release | tail -n1 | tr -d '\r')
-  export EASYTAG_VERSION=$(docker run --rm -ti "$IMG" apk list 2>/dev/null | grep '\[installed\]' | grep "easytag-[0-9]" | cut -d " " -f1 | sed 's/dovecot-//g' | tr -d '\r')
+  export EASYTAG_VERSION=$(docker run --rm -ti "$IMG" apk list 2>/dev/null | grep '\[installed\]' | grep "easytag-[0-9]" | cut -d " " -f1 | sed 's/easytag-//g' | tr -d '\r')
 fi
 
 if echo "$@" | grep -v "force" 2>/dev/null >/dev/null; then
